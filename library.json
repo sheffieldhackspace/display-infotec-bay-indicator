@@ -1,0 +1,27 @@
+{
+    "name": "AS1100",
+    "version": "1.0.0",
+    "description": "Adafruit GFX compatible driver for the AS1100 bus station dot matrix display",
+    "keywords": ["display", "dot matrix", "bus", "adafruit gfx"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sheffieldhackspace/AS1100"
+    },
+    "authors": [
+        {
+            "name": "Adam Kuczyński",
+            "url": "https://typedef.io"
+        },
+        {
+            "name": "Sheffield Hackspace",
+            "url": "https://www.sheffieldhackspace.org.uk"
+        }
+    ],
+    "dependencies": {
+        "adafruit/Adafruit BusIO": "^1.14.0",
+        "adafruit/Adafruit GFX Library": "^1.12.4"
+    },
+    "license": "MIT",
+    "frameworks": "arduino",
+    "platforms": "espressif32"
+}
