@@ -28,7 +28,7 @@
 #include <Adafruit_GFX.h>
 
 AS1100::AS1100(int sck, int mosi, int latch) : GFXcanvas1(192, 9),
-                                            _spi(-1, sck, -1, mosi, 100000, SPI_BITORDER_MSBFIRST, SPI_MODE3),
+                                            _spi(-1, sck, -1, mosi, 10000000, SPI_BITORDER_MSBFIRST, SPI_MODE3),
                                             _latch(latch) {
   pinMode(_latch, OUTPUT);
   digitalWrite(_latch, HIGH);
