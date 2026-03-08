@@ -1,11 +1,11 @@
 {
-    "name": "AS1100",
+    "name": "display-infotec-bay-indicator",
     "version": "1.0.0",
-    "description": "Adafruit GFX compatible driver for the AS1100 bus station dot matrix display",
+    "description": "An Adafruit GFX compatible driver for the Infotec bay indicator AS1100-based dot matrix display.",
     "keywords": ["display", "dot matrix", "bus", "adafruit gfx"],
     "repository": {
         "type": "git",
-        "url": "https://github.com/sheffieldhackspace/AS1100"
+        "url": "https://github.com/sheffieldhackspace/display-infotec-bay-indicator"
     },
     "authors": [
         {
