@@ -1,6 +1,6 @@
-# AS1100
+# display-infotec-bay-indicator
 
-An Adafruit GFX compatible driver for the AS1100 bus station dot matrix display.
+An Adafruit GFX compatible driver for the Infotec bay indicator AS1100-based dot matrix display.
 
 ## Hardware
 
@@ -31,7 +31,7 @@ Add the following to your `platformio.ini`:
 lib_deps =
     adafruit/Adafruit BusIO
     adafruit/Adafruit GFX Library
-    https://github.com/sheffieldhackspace/AS1100
+    https://github.com/sheffieldhackspace/display-infotec-bay-indicator
 ```
 
 ## Dependencies
@@ -43,10 +43,10 @@ lib_deps =
 ## Usage
 
 ```cpp
-#include <AS1100.h>
+#include <BayIndicator.h>
 
-AS1100 display1 = AS1100(D5, D6, D4);
-AS1100 display2 = AS1100(D8, D7, D9);
+BayIndicator display1 = BayIndicator(D5, D6, D4);
+BayIndicator display2 = BayIndicator(D8, D7, D9);
 
 void setup() {
     delay(1000); // Give the display a moment to power up before configuring it
@@ -60,7 +60,7 @@ void setup() {
     display2.begin();
     display2.fillScreen(0);
     display2.setCursor(1, 1);
-    display2.print("Sheffield");
+    display2.print("Hackspace");
     display2.display();
 }
 
@@ -71,7 +71,7 @@ void loop() {
 }
 ```
 
-Since `AS1100` inherits from `GFXcanvas1`, the full [Adafruit GFX API](https://learn.adafruit.com/adafruit-gfx-graphics-library) is available for drawing text, shapes, and bitmaps. Call `display.display()` to flush the canvas to the hardware.
+Since `BayIndicator` inherits from `GFXcanvas1`, the full [Adafruit GFX API](https://learn.adafruit.com/adafruit-gfx-graphics-library) is available for drawing text, shapes, and bitmaps. Call `display.display()` to flush the canvas to the hardware.
 
 ## Examples
 

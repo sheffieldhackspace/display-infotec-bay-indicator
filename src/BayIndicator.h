@@ -35,18 +35,18 @@ constexpr uint16_t AS1100_REG_SHUTDOWN    = 0x0C00; // 0x0C00 = off, 0x0C01 = on
 constexpr uint16_t AS1100_REG_TEST        = 0x0F00; // 0x0F00 = normal, 0x0F01 = test (all LEDs on)
 constexpr uint16_t AS1100_REG_CLOCK       = 0x0E00; // AS1100 only: clock mode (not in MAX7219)
 
-class AS1100 : public GFXcanvas1 {
+class BayIndicator : public GFXcanvas1 {
 public:
-  AS1100(int sck, int mosi, int latch);
+  BayIndicator(int8_t sck, int8_t mosi, int8_t latch);
 
   void begin();
   void display();
 
 private:
-  void latch();
+  void latch() const;
   void sendCmd(int cmdData);
   void write16(int d);
 
   Adafruit_SPIDevice _spi;
-  int _latch = 0;
+  int8_t _latch = 0;
 };

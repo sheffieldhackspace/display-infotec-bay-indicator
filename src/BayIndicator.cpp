@@ -22,19 +22,20 @@
  * SOFTWARE.
  */
 
-#include <AS1100.h>
+#include <BayIndicator.h>
 #include <Arduino.h>
 #include <SPI.h>
 #include <Adafruit_GFX.h>
 
-AS1100::AS1100(int sck, int mosi, int latch) : GFXcanvas1(192, 9),
-                                            _spi(-1, sck, -1, mosi, 10000000, SPI_BITORDER_MSBFIRST, SPI_MODE3),
-                                            _latch(latch) {
+BayIndicator::BayIndicator(const int8_t sck, const int8_t mosi, const int8_t latch)
+  : GFXcanvas1(192, 9),
+    _spi(-1, sck, -1, mosi, 10000000, SPI_BITORDER_MSBFIRST, SPI_MODE3),
+    _latch(latch) {
   pinMode(_latch, OUTPUT);
   digitalWrite(_latch, HIGH);
 }
 
-void AS1100::begin() {
+void BayIndicator::begin() {
   _spi.begin();
 
   sendCmd(AS1100_REG_CLOCK | 0x02);
@@ -47,7 +48,7 @@ void AS1100::begin() {
   display();
 }
 
-void AS1100::display() {
+void BayIndicator::display() {
   for (int digit = 0; digit < 8; digit++) {
     for (int chip = 0; chip < 32; chip++) {
       uint8_t value = 0;
@@ -68,12 +69,12 @@ void AS1100::display() {
   }
 }
 
-void AS1100::latch() {
+void BayIndicator::latch() const {
   digitalWrite(_latch, LOW);
   digitalWrite(_latch, HIGH);
 }
 
-void AS1100::sendCmd(int data) {
+void BayIndicator::sendCmd(int data) {
   for (int chip = 0; chip < 32; chip++) {
     write16(data);
   }
@@ -81,7 +82,7 @@ void AS1100::sendCmd(int data) {
   latch();
 }
 
-void AS1100::write16(int d) {
-  uint8_t buf[2] = {(uint8_t) (d >> 8), (uint8_t) (d & 0xFF)};
+void BayIndicator::write16(int d) {
+  const uint8_t buf[2] = {static_cast<uint8_t>(d >> 8), static_cast<uint8_t>(d & 0xFF)};
   _spi.write(buf, 2);
 }
