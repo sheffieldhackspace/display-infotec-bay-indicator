@@ -2,6 +2,8 @@
 
 An Adafruit GFX compatible driver for the Infotec bay indicator AS1100-based dot matrix display.
 
+![Picture of the bay indicator display removed from the enclosure](images/bay-indicator.jpeg)
+
 ## Hardware
 
 * Display dimensions: 192 × 9
